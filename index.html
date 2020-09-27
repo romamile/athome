@@ -1,0 +1,112 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  <style>
+body {
+    margin: 0;
+    background-color: #000;
+    color: #fff; 
+    font-family: Monospace;
+    font-size: 13px;
+    line-height: 24px;
+    overscroll-behavior: none;
+}
+
+.info {
+position: relative;
+    width: 100%;
+    left: -50%;
+    padding: 20px 50px;
+
+    box-sizing: border-box;
+    text-align: justify;
+    z-index: 1;
+    max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.spe {
+    font-weight: bold;
+}
+
+.btn {
+    cursor: pointer;
+    width:127px;
+    padding: 3px 10px;
+    background: #eb94d0;
+    -webkit-border-radius: 28;
+    -moz-border-radius: 28;
+    border-radius: 28px;
+}
+
+.btn:hover {
+      background: #2079b0;
+}
+
+#wrapper {
+    width:100%;
+    position: absolute;
+    top: 0px;
+    left: 50%;
+}
+
+hr {
+    border: 1px solid #2c2c2c;
+}
+  </style>
+
+  </head>
+  <body>
+    <a-scene id="forStats" background="color: black" light="defaultLightsEnabled: false" vr-mode-ui="enabled: false">
+	  <a-entity position="0 1.6 0" camera look-controls></a-entity>
+    </a-scene>
+
+  <!-- Noise lib -->
+  <script src="./perlin.js"></script>
+
+  <!-- Personal Code -->
+	<script type="x-shader/x-vertex" id="vertexshader">
+		attribute float size;
+		varying vec3 vColor;
+		void main() {
+			vColor = color;
+			vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
+			gl_PointSize = 2.0;
+			gl_Position = projectionMatrix * mvPosition;
+		}
+	</script>
+
+	<script type="x-shader/x-fragment" id="fragmentshader">
+		uniform sampler2D pointTexture;
+		varying vec3 vColor;
+		void main() {
+			gl_FragColor = vec4( vColor, 1.0 );
+		}
+	</script>
+
+  <script src="./renderer.js"></script>
+  <script src="./myJS.js"></script>
+
+<div id="wrapper">
+  <div class="info">
+    <h1>At Home</h1>
+    <p>
+        Hello toi, tu es ici chez toi, mais aussi un peu chez eux! Selon le moment ou tu lis ces mots, il n'y a peut-être seulement quelques petits bouts de choux, ou déjà une bonne troupe qui t'attend.<br/>  
+    </p >
+        <span class = "spe">Les bouts de choux - </span> Dur dur de résumer un être vivant. Ils sont probableemnt bien plus que ça, mais chaque bouts de choux à une apparence et un comportement qui lui sont propres, selon son surnom et son age Epoch.
+    </p>
+    <p>
+        <span class = "spe">Toi - </span> Chaque semaine, tu as l'occasion de créer un nouveau bout de choux à partir d'un mot. Ce mot (et donc ce bout de choux!) represente la semaine qui vient de se passer, alors donne lui un surnom qui lui correspond bien!
+    </p>
+    <p>
+        <span class = "spe">Home - </span> Il n'y a pas d'endroit plus réconfortant. Plus qu'un lieu, c'est un ressenti. Tu peux ici venir voir tes petits bouts de choux, et interagir avec eux de par là ou tu guides ton regard. Peut etre qu'il y a aussi d'autres moyens d'interaction, qui peut savoir...
+    </p>
+    <div class="btn" onclick="document.getElementById('wrapper').style.display='none'; document.documentElement.requestFullscreen()"> -Ouvre la porte- </div>
+  </div>
+
+</div>
+
+  </body>
+</html>
+
