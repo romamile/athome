@@ -5,7 +5,7 @@ Happy birthday Julia!
 
 ## Todo
 First
- * Simpler landscape (no mountains, the wireframe bigger and centered). 
+ * better dot lights. 3 or 4, to have lighting everywhere 
  * Create simple creatures, regular polyedre with "random" colors on faces.
  * Simple random walked constrained in a "couronne spherique" 
  * Simple "attraction" when gaze around one (move along axis)
@@ -21,6 +21,8 @@ Last
  * JSON load/save system (lowdb) with connexion to my website 
 
 Bonus
+ * When you create the creature, it appears in front of you and is higlighted for a while ?
+ * Test with shadows
  * Action at click?
  * "happy birthday Julia!" qui se lance juste le bon jour
 

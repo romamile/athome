@@ -1,4 +1,4 @@
- 
+
 var showDebug = false;
 var isReplay = true;
 var okShadow = false;
@@ -35,14 +35,16 @@ var gaze = {};
 
 
 // All
-var myQuat = new THREE.Quaternion();
-var myPos = new THREE.Vector3();
 var sky = new THREE.Group();
+
+var listEntities = new THREE.Group();
+
 var starFd = {};
 var sfdPos, sfdCol; 
 var sfd = {};
-sfd.scale = 6;
-sky.radius = 6;
+sfd.scale = 20;
+sky.radius = 100;
+
 var posSf = [], colSf = [];
 
 var me = {}; me.id = 0; me.teta = Math.PI*0.5; me.phi = 0;
@@ -58,7 +60,6 @@ animate();
 
 function onKeyPressed(event)  {
 
-
 	switch(event.key) {
 	case 'a':
     //	scene.add( starFd.clone() );
@@ -71,6 +72,9 @@ function onKeyPressed(event)  {
 			document.getElementsByTagName("a-scene")[0].removeAttribute("stats");
 		}
 		break;
+    case ' ':
+        render.createEntity(null, null);
+        break;
 	}
 
 }
@@ -82,11 +86,10 @@ function onKeyPressed(event)  {
 function init() {
   
 	refScene = Date.now();
-
   	document.addEventListener("keydown", onKeyPressed, false); 
 
-	// Global creation (doesn't depend on scene)
-  	render.createGround();
+    scene.add(listEntities);
+  	//render.createGround();
   	render.createSky();
 	render.createStarField();
 
@@ -142,7 +145,7 @@ scene.add( pointLightHelper2 );
   scene.add( light3 ); 
   listLight.push(light3);
 
-
+/*
 spotLight = new THREE.SpotLight( 0xffffff );
 spotLight.position.set( 0, 20, 0 );
 spotLight.castShadow = true;
@@ -150,7 +153,7 @@ spotLight.angle = Math.PI/6;
 spotLight.penumbra = 1;
 spotLight.intensity = 0.5
 scene.add( spotLight );
-
+*/
 
 //var spotLightHelper = new THREE.SpotLightHelper( spotLight );
 //scene.add( spotLightHelper );
@@ -170,12 +173,14 @@ function animate() {
 	if(sky.children[0].material.opacity < 0.99) {
 		var tOp = (Date.now() - refScene)/1000;
 		sky.children[0].material.opacity = Math.min(tOp/5,1); 
-		sky.children[1].material.opacity = Math.min(tOp/5,1)*0.4; 
+		sky.children[1].material.opacity = Math.min(tOp/5,1); 
+		sky.children[2].material.opacity = Math.min(tOp/5,1)*0.4; 
 	}
 
 
-	sky.children[0].rotation.set(0,Math.cos(Date.now()*0.0004)*0.3,0);
-	sky.children[1].rotation.set(0,Math.cos(Date.now()*0.00035+2)*0.3,0);
+	sky.children[0].rotation.set(0, 0, Math.cos(Date.now()*0.00035+2)*0.33);
+	sky.children[1].rotation.set(Math.cos(Date.now()*0.00035+2)*0.3,0,0);
+	sky.children[2].rotation.set(0,Math.cos(Date.now()*0.0004)*0.27,0);
 	requestAnimationFrame( animate );
 }
 
