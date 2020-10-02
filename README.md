@@ -1,29 +1,26 @@
 # athome
 Happy birthday Julia!
 
-=> system de coordinates spherique
-
 ## Todo
 First
- * better dot lights. 3 or 4, to have lighting everywhere 
- * Create simple creatures, regular polyedre with "random" colors on faces.
- * Simple random walked constrained in a "couronne spherique" 
- * Simple "attraction" when gaze around one (move along axis)
- * JSON system to get/store information about the little creatures
+ * Better creatures
+  * 3h what patterns on them ?(dots, lines, applat, etc etc)
+  * 2h what pattenrs of colors
+  * 1h creation of it from words and time 
+
+  * 1h JSON system to get/store information about the little creatures
  
+  * 4h braintenberg behaviors 
+  * 2h better handling of "gaze" less zero ou un, more analogic, smoother, bigger approximation of contact with entities
+
+
 Second
- * Maybe reusing the mountain project around the sphere. Like an "inside" earth. But then with transparency ? and the moving stuff behind?
- * braintenberg behaviors 
-
-
-Last
- * interface qui pop up au lancement du site s'il est temps de créer une nouvelle bestiole + rapport avec la DB Json (https://jsfiddle.net/typicode/4kd7xxbu/)
- * JSON load/save system (lowdb) with connexion to my website 
+ * 4h interface qui pop up au lancement du site s'il est temps de créer une nouvelle bestiole + rapport avec la DB Json (https://jsfiddle.net/typicode/4kd7xxbu/)
+ * 3h JSON load/save system (lowdb) with connexion to my website, + ligne de commande qui "push" sur github
 
 Bonus
- * When you create the creature, it appears in front of you and is higlighted for a while ?
- * Test with shadows
- * Action at click?
- * "happy birthday Julia!" qui se lance juste le bon jour
+ * 2h Reticule in HTML
+    * 1h change in color when interacting
+ * 2h Test with shadows
 
 

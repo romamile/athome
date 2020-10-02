@@ -40,6 +40,18 @@ position: relative;
     border-radius: 28px;
 }
 
+.btn2 {
+    cursor: pointer;
+    width:50px;
+    padding: 3px 10px;
+    margin-left: 30px;
+    background: #999999;
+    opacity: 0.6;
+    -webkit-border-radius: 28;
+    -moz-border-radius: 28;
+    border-radius: 28px;
+}
+
 .btn:hover {
       background: #2079b0;
 }
@@ -85,6 +97,20 @@ hr {
 		}
 	</script>
 
+    <script>
+        function customEnterVR () {
+          var scene = document.querySelector('a-scene');
+          if (scene) {
+            if (scene.hasLoaded) {
+              scene.enterVR();
+            } else {
+              scene.addEventListener('loaded', scene.enterVR);
+            }
+          }
+        }
+    </script>
+
+
   <script src="./renderer.js"></script>
   <script src="./myJS.js"></script>
 
@@ -99,7 +125,8 @@ hr {
     <p>
         <span class = "spe">Toi - </span> Chaque semaine, tu as l'occasion de créer un nouveau bout de choux à partir d'un mot sensé representé la semaine qui vient de se passer! Tu peux alors interagir avec lui et ses camarades de par là ou tu guides ton regard.
     </p>
-    <div class="btn" onclick="document.getElementById('wrapper').style.display='none'; /*document.documentElement.requestFullscreen()*/"> -Ouvre la porte- </div>
+    <span class="btn" onclick="document.getElementById('wrapper').style.display='none'; /*document.documentElement.requestFullscreen()*/"> -Ouvre la porte- </span>   
+    <span id "vrMe" class="btn2" onclick="customEnterVR()"> -VR- </span>
   </div>
 
 </div>

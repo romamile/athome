@@ -19,13 +19,22 @@ render.createEntity = function(name, time) {
 	let entity = new THREE.Mesh( geoE, matE );
 
 	for(var i = 0; i < entity.geometry.faces.length; ++i) {
-		entity.geometry.faces[i].color = new THREE.Color( Math.random()*0.6+0.2, Math.random()*0.6+0.2, Math.random()*0.6+0.2); 
+		//entity.geometry.faces[i].color = new THREE.Color( Math.random()*0.6+0.2, Math.random()*0.6+0.2, Math.random()*0.6+0.2); 
+		entity.geometry.faces[i].color = new THREE.Color(1,1,1); 
 	}
 
+    entity.id = Math.floor( Math.random() * 999999);
 
+    entity.aa = new THREE.Spherical();
+    entity.a = new THREE.Spherical();
+    entity.s = new THREE.Spherical();
+    entity.p = new THREE.Spherical(THREE.Math.randFloat( sMin, sMax ), Math.random()*Math.PI - Math.PI/2, Math.random()*Math.PI*2);
 
 	entity.rotation.set(Math.random()*3.14,Math.random()*3.14,Math.random()*3.14);
-	entity.position.setFromSphericalCoords( THREE.Math.randFloat( 30, 85 ), Math.random()*Math.PI - Math.PI/2, Math.random()*Math.PI*2)
+	entity.position.setFromSpherical( entity.s )
+
+
+    entity.attracted = false;
 
 	listEntities.add(entity);
 
