@@ -222,25 +222,31 @@ function animate() {
     var intersects = raycaster.intersectObjects( listEntities.children );
 
 	if ( intersects.length > 0 ) {
-        console.log("pojpoj");
         // Check if new object
         if(gaze.idObject != intersects[0].object.id) {
             gaze.idObject = intersects[0].object.id;
             gaze.timeRef = (new Date()).getTime();
             gaze.done = false;
+			reticulumToActive(false);
         } else {
             // Test if suffisantly long gaze
             if(gaze.done != true && gaze.timeRef != 0 && (new Date()).getTime() > gaze.timeRef + gaze.shortGaze) {
                 intersects[0].object.material.color.setHex(Math.random() * 0xffffff);
                 intersects[0].object.attracted = true;
 
+				reticulumToActive(true);
+
                 gaze.done = true;
             }
         }  
 	} else {
+		if(gaze.idObject != -1) { // After a gaze stopped
+			reticulumToInactive();
+		}
 		gaze.idObject = -1;
 		gaze.timeRef = 0;
         gaze.done = false;
+
     }
 
 
@@ -248,4 +254,28 @@ function animate() {
 	requestAnimationFrame( animate );
 }
 
+
+// ==================================
+// ======== UTILS FUNCTIONS  ======== ================
+// ==================================
+
+reticulumToActive = function(longOrShortGaze) {
+//	document.getElementsByClassName("tstRet").forEach(
+//							elt => elt.style.fill = "red");
+	let ret = document.getElementsByClassName("tstRet");
+	for (let i = 0; i < ret.length; i++) {
+	  ret[i].style.fill = "red";
+	}
+}
+
+
+reticulumToInactive = function() {
+//	document.getElementsByClassName("tstRet").forEach(
+//							elt => elt.style.fill = "white");
+
+	let ret = document.getElementsByClassName("tstRet");
+	for (let i = 0; i < ret.length; i++) {
+	  ret[i].style.fill = "white";
+	}
+}
 

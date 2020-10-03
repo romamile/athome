@@ -7,9 +7,15 @@ var render = {};
 render.createEntity = function(name, time) {
 
 
+    // 0) Random size?
+
+   // 2) colors
+
+
     // Random colors on face (and explore what shader ? Lamber, or flat)
     // Random regular polyhedre ?
     // Semi random size ?(low diff)
+
 
 
 	let geoE = new THREE.IcosahedronGeometry( 5, 1 );
@@ -18,10 +24,30 @@ render.createEntity = function(name, time) {
 	let matE = new THREE.MeshBasicMaterial( { vertexColors: true } );
 	let entity = new THREE.Mesh( geoE, matE );
 
-	for(var i = 0; i < entity.geometry.faces.length; ++i) {
-		//entity.geometry.faces[i].color = new THREE.Color( Math.random()*0.6+0.2, Math.random()*0.6+0.2, Math.random()*0.6+0.2); 
-		entity.geometry.faces[i].color = new THREE.Color(1,1,1); 
+    // 1) Patterns 
+
+    // 1.1) FILL
+	//for(let i = 0; i < entity.geometry.faces.length; ++i) {
+	//	entity.geometry.faces[i].color = new THREE.Color(1,1,1); 
+	//}
+
+    // 1.2) RANDOM DOTS
+    //let nbrRandDots = 10; 
+    //for(let i = 0; i < nbrRandDots; ++i) {
+	//	entity.geometry.faces[i].color = new THREE.Color( Math.random()*0.6+0.2, Math.random()*0.6+0.2, Math.random()*0.6+0.2); 
+	//}
+
+    // 1.3) RANDOM ZONE
+    let sizeZone = 15;
+    let offsetZone = Math.floor( Math.random() * (entity.geometry.faces.length-sizeZone) );
+    for(let i = offsetZone; i < offsetZone + sizeZone; ++i) {
+        console.log(i + " / " + entity.geometry.faces.length);
+		entity.geometry.faces[i].color = new THREE.Color( 1.0, 0, 0); 
 	}
+
+
+
+
 
     entity.id = Math.floor( Math.random() * 999999);
 
