@@ -14,8 +14,8 @@ render.createEntity = function(name, time) {
 
 	let geoE = new THREE.IcosahedronGeometry( 5, 1 );
 	geoE.computeFlatVertexNormals();
-	//let matE = new THREE.MeshLambertMaterial( { vertexColors: THREE.FaceColors } );
-	let matE = new THREE.MeshLambertMaterial( { vertexColors: true } );
+	//let matE = new THREE.MeshLambertMaterial( { vertexColors: true } );
+	let matE = new THREE.MeshBasicMaterial( { vertexColors: true } );
 	let entity = new THREE.Mesh( geoE, matE );
 
 	for(var i = 0; i < entity.geometry.faces.length; ++i) {

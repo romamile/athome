@@ -63,6 +63,24 @@ position: relative;
     left: 50%;
 }
 
+#reticulum {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    margin-top: -15px;
+    margin-left: -15px;
+    opacity: 0.1;
+
+    display:none;
+}
+
+.tstRet {
+    fill:white;
+    /*fill-opacity:1;*/
+}
+
 hr {
     border: 1px solid #2c2c2c;
 }
@@ -103,6 +121,7 @@ hr {
           if (scene) {
             if (scene.hasLoaded) {
               scene.enterVR();
+              document.getElementById('reticulum').style.display='block';
             } else {
               scene.addEventListener('loaded', scene.enterVR);
             }
@@ -125,11 +144,36 @@ hr {
     <p>
         <span class = "spe">Toi - </span> Chaque semaine, tu as l'occasion de créer un nouveau bout de choux à partir d'un mot sensé representé la semaine qui vient de se passer! Tu peux alors interagir avec lui et ses camarades de par là ou tu guides ton regard.
     </p>
-    <span class="btn" onclick="document.getElementById('wrapper').style.display='none'; /*document.documentElement.requestFullscreen()*/"> -Ouvre la porte- </span>   
+    <span class="btn" onclick="document.getElementById('wrapper').style.display='none'; document.getElementById('reticulum').style.display='block'; /*document.documentElement.requestFullscreen()*/"> -Ouvre la porte- </span>   
     <span id "vrMe" class="btn2" onclick="customEnterVR()"> -VR- </span>
   </div>
 
 </div>
+
+
+    <!-- Reticulum -->
+    <svg id="reticulum"
+       xmlns="http://www.w3.org/2000/svg"
+       enable-background="new 0 0 300 300"
+       viewBox="0 0 226.771 226.771"
+       height="226.771"
+       width="226.771"
+       y="0px"
+       x="0px"
+       id="Layer_1"
+       version="1.1">
+       <g
+         transform="translate(-34.016,-33.543)"
+         id="g4224" class="tstRet" ><g
+           id="g4226"><path
+             id="path4228" class = "tstRet"
+             d="m 147.402,33.543 c -62.622,0 -113.386,50.764 -113.386,113.386 0,62.622 50.764,113.385 113.386,113.385 62.621,0 113.385,-50.764 113.385,-113.385 0,-62.621 -50.765,-113.386 -113.385,-113.386 z M 147.4,222.52 c -41.747,0 -75.59,-33.842 -75.59,-75.59 0,-41.747 33.843,-75.59 75.59,-75.59 41.747,0 75.591,33.843 75.591,75.59 0,41.748 -33.844,75.59 -75.591,75.59 z" /></g><g
+           id="g4230"><path
+             style="fill:none;fill-opacity:1;stroke:none"
+             id="path4232"
+             d="m 147.402,33.543 c -62.622,0 -113.386,50.764 -113.386,113.386 0,62.622 50.764,113.385 113.386,113.385 62.621,0 113.385,-50.764 113.385,-113.385 0,-62.621 -50.765,-113.386 -113.385,-113.386 z M 147.4,222.52 c -41.747,0 -75.59,-33.842 -75.59,-75.59 0,-41.747 33.843,-75.59 75.59,-75.59 41.747,0 75.591,33.843 75.591,75.59 0,41.748 -33.844,75.59 -75.591,75.59 z" /></g></g>
+    </svg>
+    
 
   </body>
 </html>
