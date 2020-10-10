@@ -186,6 +186,8 @@ function animate() {
     // 2) behavior of the entity
     listEntities.children.forEach(function(it) {
 
+            
+        // 2.a) GROUP
         let p = 0.00001, pp = 100;
         it.aa.set( (Math.random()-0.5)*p, (Math.random()-0.5)*p/10, (Math.random()-0.5)*p/10) 
         
@@ -213,6 +215,23 @@ function animate() {
         }
         
         it.position.setFromSpherical(it.p);
+
+
+        // 2.b) Shell
+/*
+        it.children[0].rotation.x = noise.simplex2(0, Date.now()/100000) * 2*Math.PI*12;
+        it.children[0].rotation.x = noise.simplex2(100, Date.now()/100000)* 2*Math.PI*12;
+        it.children[0].rotation.x = noise.simplex2(100000, Date.now()/100000)* 2*Math.PI*12;
+
+        it.children[1].rotation.y = Date.now()/1000;
+
+        it.children[2].rotation.y = Date.now()/500;
+*/
+        it.children[1].scale.setScalar( 1 + 0.1*Math.sin(Date.now()/300) ); // 300 <> 3000
+        it.children[2].scale.setScalar( 1 + 0.2*Math.sin(Date.now()/300) );
+
+        // 2.c) Around
+
 
     }); 
 

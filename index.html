@@ -15,7 +15,7 @@ body {
     overscroll-behavior: none;
 }
 
-.info {
+#info {
 position: relative;
     width: 100%;
     left: -50%;
@@ -27,6 +27,21 @@ position: relative;
     max-width: 750px;
   margin-left: auto;
   margin-right: auto;
+}
+
+#addBestiole {
+position: relative;
+    width: 100%;
+    left: -50%;
+    padding: 20px 50px;
+
+    box-sizing: border-box;
+    text-align: justify;
+    z-index: 1;
+    max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
+  display:none;
 }
 
 .spe {
@@ -55,7 +70,21 @@ position: relative;
     border-radius: 28px;
 }
 
+.btn3 {
+    cursor: pointer;
+    width:50px;
+    padding: 3px 10px;
+    background: #eb94d0;
+    -webkit-border-radius: 28;
+    -moz-border-radius: 28;
+    border-radius: 28px;
+}
+
 .btn:hover {
+      background: #2079b0;
+}
+
+.btn3:hover {
       background: #2079b0;
 }
 
@@ -119,6 +148,8 @@ hr {
 	</script>
 
     <script>
+
+
         function customEnterVR () {
           var scene = document.querySelector('a-scene');
           if (scene) {
@@ -130,6 +161,35 @@ hr {
             }
           }
         }
+
+        function enterAtHome() {
+
+            document.getElementById('info').style.display='none';
+
+            // CHECK IF ONE WEEK HAS PASSED BY
+            // TODO
+            if(true) {
+                document.getElementById('addBestiole').style.display='block';
+            } else {
+                document.getElementById('wrapper').style.display='none';
+                document.getElementById('reticulum').style.display='block';
+                document.documentElement.requestFullscreen()
+            }
+
+        }
+
+
+        function addBestiole() {
+            document.getElementById('wrapper').style.display='none';
+            document.getElementById('reticulum').style.display='block';
+            document.documentElement.requestFullscreen()
+
+            // Code qui va faire une requete POST pour mettre à jour la bestiole
+            // TODO
+            console.log(document.getElementById('nameBestiole').value);
+            
+        }
+
     </script>
 
 
@@ -137,19 +197,34 @@ hr {
   <script src="./myJS.js"></script>
 
 <div id="wrapper">
-  <div class="info">
+
+  <div id="info">
     <h1>At Home</h1>
     <p>
-        Hello toi, tu es ici chez toi, mais aussi un peu chez eux! Selon le moment ou tu lis ces mots, il n'y a peut-être seulement quelques petits bouts de choux, ou déjà une bonne troupe qui t'attend.<br/>  
+        Hello toi, tu es ici chez toi, mais aussi un peu chez eux! Selon le moment ou tu lis ces mots, il n'y a peut-être seulement quelques bestioles, ou déjà une bonne troupe qui t'attend.<br/>  
     </p >
-        <span class = "spe">Les bouts de choux - </span> Dur dur de résumer un être vivant. Ils sont probablement bien plus que ça, mais chaque bout de choux a une apparence et un comportement qui lui sont propres, selon son surnom et son age Epoch.
+        <span class = "spe">Les bestioles - </span> Dur dur de résumer un être vivant. Ils sont probablement bien plus que ça, mais chaque bestiole a une apparence et un comportement qui lui sont propres, selon son surnom et son age Epoch.
     </p>
     <p>
-        <span class = "spe">Toi - </span> Chaque semaine, tu as l'occasion de créer un nouveau bout de choux à partir d'un mot sensé representé la semaine qui vient de se passer! Tu peux alors interagir avec lui et ses camarades de par là ou tu guides ton regard.
+        <span class = "spe">Toi - </span> Chaque semaine, tu as l'occasion de créer une nouvelle bestiole à partir d'un mot sensé representer la semaine qui vient de se passer. Tu peux alors interagir avec elle et ses camarades de par là où tu guides ton regard.
     </p>
-    <span class="btn" onclick="document.getElementById('wrapper').style.display='none'; document.getElementById('reticulum').style.display='block'; /*document.documentElement.requestFullscreen()*/"> -Ouvre la porte- </span>   
-    <span id "vrMe" class="btn2" onclick="customEnterVR()"> -VR- </span>
+    <span class="btn"  onclick="enterAtHome()"> -Ouvre la porte- </span>
+    <span class="btn2" onclick="customEnterVR()"> -VR- </span>
   </div>
+
+
+  <div id="addBestiole">
+    <h1>At Home</h1>
+    <br/><br/>
+    <br/><br/>
+    <br/><br/>
+
+    <p>
+    <span class = "spe">Une semaine est passée - </span> Ouahhhh ça fait un baille! Une nouvelle bestiole sort de son sommeil. C'est quoi donc son nom?!
+    </p>
+
+    <span style="margin-right:20px">Salut toi, ça te dit de t'appeler <input type="text" id="nameBestiole" name="nameBestiole" required size="12"> ?</span>
+    <span class="btn3" type="submit" onclick="addBestiole()"> OK! </span>
 
 </div>
 
